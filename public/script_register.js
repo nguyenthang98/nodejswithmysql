@@ -23,5 +23,28 @@ $(document).ready(function(){
             $(id+"> button").html(event.target.innerHTML);
         }
     })
+    //form-submit-btn
+    $('#register-form-submit-btn').click(function(event){
+      //check fill field
+      var formInputs = document.getElementsByClassName("register-form-input");
+      for(i=0; i<formInputs.length ; i++){
+        if(formInputs[i].value == ""){
+          var id = "#"+formInputs[i].id;
+          $(id).addClass("danger");
+          var message = $(".message").attr("for",formInputs[i].id);
+          message.html("please fill this field");
+          for(j=0; j<message.length; j++){
+            message[i].classList.add("show");
+          }
+        }else{
+          var id = "#"+formInputs[i].id;
+          if($(id).hasClass("danger")){
+            $(id).removeClass("danger");
+            id = id.replace("#","");
+            $(".message").attr("for",id).removeClass("show");
+          }
+        }
+      }
+    })
 
 })

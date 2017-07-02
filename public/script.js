@@ -26,7 +26,7 @@ $(document).ready(function(){
     };
     if(data.UserName.indexOf(" ") >= 0 || data.Password.indexOf(" ") >= 0){
         console.log();
-        alert("User name and Password could not contain SPACE");
+        alert("User name and Password could not contain WHITE SPACE");
         return false;
     }
     data.UserName = toStandardString(data.UserName);
@@ -41,5 +41,5 @@ $(document).ready(function(){
   socket.on("server-send-login-success",function(){
     alert("log-in success");
   })
-  
+
 })

@@ -14,9 +14,11 @@
         <div id="wrapper" class="animated bounce">
             <div id="register-form">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="name" placeholder="Enter your name here">
+                <input class="register-form-input" id="name" type="text" name="name" placeholder="Enter your name here">
+                <div class="message" for="name" >fill</div>
                 <label for="Password">Password</label>
-                <input id="Password" type="text" name="Password" placeholder="Create Password">
+                <input class="register-form-input" id="Password" type="password" name="Password" placeholder="Create Password">
+                <div class="message" for="Password"></div>
                 <label for="age-select">Age</label>
                 <div id="age-dropdrown" class="dropdown select">
                     <button name="button" class="dropdown-btn" data-toggle="age-dropdown-content" id="age-dropdown-btn">Dropdown</button>
@@ -29,17 +31,7 @@
                         <li>Option 3</li>
                     </ul>
                 </div>
-                <div id="class-dropdrown" class="dropdown select">
-                    <button name="button" class="dropdown-btn" data-toggle="class-dropdown-content" id="class-dropdown-btn">Dropdown</button>
-                    <ul class="dropdown-content" id="class-dropdown-content">
-                        <li>Option 1</li>
-                        <li>Option 2</li>
-                        <li>Option 3</li>
-                        <li>Option 3</li>
-                        <li>Option 3</li>
-                        <li>Option 3</li>
-                    </ul>
-                </div>
+                <div class="btn" id="register-form-submit-btn">Create</div>
             </div>
         </div>
     </body>

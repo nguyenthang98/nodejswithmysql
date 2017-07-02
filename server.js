@@ -26,9 +26,10 @@ var io = require("socket.io")(server);
 server.listen(3000);
 
 io.on("connection",function(socket){
+    socket.isLoggedIn = false;
   //console.log("has connection : "+ socket.id);
   socket.on("disconnect",function(){
-    //console.log(socket.id + " has disconnected")
+    console.log(socket.id + " has disconnected");
   })
 
   socket.on("Client-send-userdata",function(data){
@@ -45,12 +46,16 @@ io.on("connection",function(socket){
           //log-in success
           console.log("login success");
           socket.emit("server-send-login-success");
+          socket.isLoggedIn= true;
         }
       }
     })
   })
-})
 
+})
 app.get('/',function(req,res){
-  res.render('home');
+    res.render('home');
+})
+app.get('/register',function(req,res){
+    res.render('register');
 })

@@ -1,5 +1,7 @@
 var socket = io.connect('http://localhost:3000');
-
+function toStandardString(args){
+    return args.replace(/ |'|"|'OR'/g,"");
+}
 $(document).ready(function(){
   //login-form
   $("#login-form > input:not([type='submit'])").mouseover(function(){
@@ -22,7 +24,14 @@ $(document).ready(function(){
       UserName: $("#login-form > input[name='UserName']").val(),
       Password: $("#login-form > input[name='PassWord']").val()
     };
-    socket.emit("Client-send-userdata",data)
+    if(data.UserName.indexOf(" ") >= 0 || data.Password.indexOf(" ") >= 0){
+        console.log();
+        alert("User name and Password could not contain SPACE");
+        return false;
+    }
+    data.UserName = toStandardString(data.UserName);
+    data.Password = toStandardString(data.Password);
+    socket.emit("Client-send-userdata",data);
     return false;
   })
   //server-cient working
@@ -32,5 +41,5 @@ $(document).ready(function(){
   socket.on("server-send-login-success",function(){
     alert("log-in success");
   })
-
+  
 })
